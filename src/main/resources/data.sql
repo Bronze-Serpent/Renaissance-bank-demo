@@ -12,8 +12,8 @@ VALUES ('2002-02-12', 1),
        ('2002-02-12', 2);
 
 INSERT INTO car_in_sale(sale_id, car_id, quantity)
-VALUES (3, 1, 2),
-       (4, 3, 1);
+VALUES (1, 1, 2),
+       (2, 3, 1);
 
 
 SELECT s1.id id,

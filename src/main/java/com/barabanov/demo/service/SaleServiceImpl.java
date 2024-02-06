@@ -1,10 +1,9 @@
 package com.barabanov.demo.service;
 
 import com.barabanov.demo.dto.RevenueFilter;
-import com.barabanov.demo.dto.SaleDto;
+import com.barabanov.demo.entity.Sale;
 import com.barabanov.demo.repository.SaleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,10 +24,8 @@ public class SaleServiceImpl
     }
 
 
-    public List<SaleDto> getAllSales(Sort saleSort)
+    public List<Sale> getAllSales()
     {
-        saleRepository.findAll(saleSort);
-
-        return null;
+        return saleRepository.findAllGonerSorting();
     }
 }

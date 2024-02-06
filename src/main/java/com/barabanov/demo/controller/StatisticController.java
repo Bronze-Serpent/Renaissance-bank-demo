@@ -2,6 +2,7 @@ package com.barabanov.demo.controller;
 
 import com.barabanov.demo.dto.RevenueFilter;
 import com.barabanov.demo.dto.SaleDto;
+import com.barabanov.demo.entity.Sale;
 import com.barabanov.demo.service.SaleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -26,9 +27,10 @@ public class StatisticController
 
 
     @PostMapping("/get-all-sales")
-    private List<SaleDto> getAllSales()
+    private List<Sale> getAllSales()
     {
-        Sort sort = Sort.by("date", "customer.lastname", "customer.firstname", "");
-        return saleService.getAllSales(sort);
+//        Sort sort = Sort.by("date", "customer.lastname", "customer.firstname");
+        List<Sale> allSales = saleService.getAllSales();
+        return allSales;
     }
 }
