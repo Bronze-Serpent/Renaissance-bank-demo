@@ -2,13 +2,11 @@ package com.barabanov.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
-import java.util.List;
 
 
 @SuperBuilder
@@ -26,6 +24,10 @@ public class Sale extends BaseEntity<Long>
     @ManyToOne
     Customer customer;
 
-    @OneToMany(mappedBy = "sale")
-    List<CarInSale> carInSale;
+    @ManyToOne
+    Car car;
+
+    Integer quantity;
+
+    Long amount;
 }

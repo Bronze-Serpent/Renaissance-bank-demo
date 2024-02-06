@@ -1,21 +1,27 @@
 package com.barabanov.demo.service;
 
 import com.barabanov.demo.dto.RevenueFilter;
+import com.barabanov.demo.dto.SaleDto;
 import com.barabanov.demo.entity.Sale;
+import com.barabanov.demo.mapper.SalesMapper;
 import com.barabanov.demo.repository.SaleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 
 @RequiredArgsConstructor
 @Transactional
 @Service
-public class SaleServiceImpl
+public class SaleServiceImpl implements SaleService
 {
     private final SaleRepository saleRepository;
+
+    private final SalesMapper salesMapper;
 
 
     public Long getRevenue(RevenueFilter revenueFilter)
@@ -24,8 +30,10 @@ public class SaleServiceImpl
     }
 
 
-    public List<Sale> getAllSales()
+    public List<SaleDto> getAllSales(Sort sort)
     {
-        return saleRepository.findAllGonerSorting();
+        return StreamSupport.stream(saleRepository.findAll(sort).spliterator(), false)
+                .map(salesMapper::toDto)
+                .toList();
     }
 }

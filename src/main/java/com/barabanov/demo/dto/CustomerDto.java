@@ -9,9 +9,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CarInSaleDto
+public class CustomerDto
 {
-    String model;
-
-    Integer quantity;
+    String firstname;
+    String lastname;
+    String phoneNum;
 }
