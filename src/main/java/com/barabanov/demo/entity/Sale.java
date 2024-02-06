@@ -27,5 +27,5 @@ public class Sale extends BaseEntity<Long>
     Customer customer;
 
     @OneToMany(mappedBy = "sale")
-    List<CarsInSale> carsInSale;
+    List<CarInSale> carInSale;
 }

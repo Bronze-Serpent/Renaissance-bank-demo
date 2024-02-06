@@ -26,7 +26,7 @@ CREATE TABLE sale(
 
 
 --changeset barabanov:cars_in_sale
-CREATE TABLE cars_in_sale(
+CREATE TABLE car_in_sale(
      id              BIGSERIAL   PRIMARY KEY,
      sale_id         BIGINT      REFERENCES sale(id),
      car_id          BIGINT      REFERENCES car(id),

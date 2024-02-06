@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class CarsInSale extends BaseEntity<Long>
+public class CarInSale extends BaseEntity<Long>
 {
     @ManyToOne
     Car car;
