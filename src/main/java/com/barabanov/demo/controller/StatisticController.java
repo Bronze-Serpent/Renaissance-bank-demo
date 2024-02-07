@@ -1,14 +1,12 @@
 package com.barabanov.demo.controller;
 
+import com.barabanov.demo.dto.RevenueDto;
 import com.barabanov.demo.dto.RevenueFilter;
 import com.barabanov.demo.dto.SaleDto;
-import com.barabanov.demo.entity.Sale;
 import com.barabanov.demo.service.SaleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,17 +18,16 @@ public class StatisticController
     private final SaleServiceImpl saleService;
 
     @GetMapping("/revenue")
-    private Long getRevenue(RevenueFilter revenueFilter)
+    private RevenueDto getRevenue(@RequestParam RevenueFilter revenueFilter)
     {
-        return 0L;
+        return new RevenueDto(saleService.getRevenue(revenueFilter));
     }
 
 
     @PostMapping("/get-all-sales")
-    private List<Sale> getAllSales()
+    private List<SaleDto> getAllSales()
     {
-//        Sort sort = Sort.by("date", "customer.lastname", "customer.firstname");
-        List<Sale> allSales = saleService.getAllSales();
-        return allSales;
+        Sort sort = Sort.by("date", "customer.lastname", "customer.firstname", "orderCoast");
+        return saleService.getAllSales(sort);
     }
 }

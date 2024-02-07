@@ -1,28 +1,27 @@
 INSERT INTO car (name, price)
-VALUES ('BMW X5', 2000000),
-('BMW X6', 3000000),
-('BMW X7', 2000000);
+VALUES
+    ('BMW X5', 2000000),
+    ('BMW X6', 3000000),
+    ('BMW X7', 2000000);
 
 INSERT INTO customer(firstname, lastname, phone_num)
-VALUES ('durka', 'skaraia', '03'),
-('ghost', 'busters', '555-2368');
+VALUES
+    ('Иванов', 'Сергей', '+79107891122'),
+    ('Коробкин', 'Олег', '+79107891155'),
+    ('Олейкин', 'Роман', '+79107891166');
 
 INSERT INTO sale(date, customer_id)
-VALUES ('2002-02-12', 1),
-       ('2002-02-12', 2);
+VALUES ('2021-10-01', 1),
+       ('2021-10-02', 2),
+       ('2021-10-02', 3),
+       ('2021-10-02', 2),
+       ('2021-10-02', 2),
+       ('2021-10-02', 1);
 
 INSERT INTO car_in_sale(sale_id, car_id, quantity)
-VALUES (1, 1, 2),
-       (2, 3, 1);
-
-
-SELECT s1.id id,
-       s1.date date,
-       c1.firstname firstname,
-       c1.lastname lastname,
-       (SELECT SUM(cis2.quantity * c2.price)
-        FROM car_in_sale cis2 INNER JOIN car c2
-                                         ON cis2.car_id = c2.id
-        WHERE cis2.sale_id = s1.id) order_sum
-FROM sale s1 INNER JOIN customer c1
-                        ON s1.customer_id = c1.id;
+VALUES (1, 1, 1),
+       (2, 2, 2),
+       (3, 3, 1),
+       (4, 3, 1),
+       (5, 1, 2),
+       (6, 2, 1);

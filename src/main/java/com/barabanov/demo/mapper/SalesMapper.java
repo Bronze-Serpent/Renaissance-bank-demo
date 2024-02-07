@@ -5,11 +5,8 @@ import com.barabanov.demo.entity.Sale;
 import org.mapstruct.Mapper;
 
 
-@Mapper(uses = {
-        CarInSaleMapper.class,
-        CustomerMapper.class
-})
-public interface SalesMapper
+@Mapper(uses = {CarInSaleMapper.class, CustomerMapper.class}, componentModel = "spring")
+public abstract class SalesMapper
 {
-    SaleDto toDto(Sale sale);
+    public abstract SaleDto toDto(Sale sale);
 }

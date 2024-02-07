@@ -14,8 +14,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SaleDto
 {
-    ClientDto client;
-    Long orderCoast;
     LocalDate date;
-    List<CarInSaleDto> carInSaleList;
+    CustomerDto customer;
+    List<CarInSaleDto> carInSale;
+    Long orderCoast;
 }
