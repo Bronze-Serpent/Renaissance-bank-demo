@@ -48,7 +48,10 @@
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
+			<version>5.0.0</version>
+			<classifier>jakarta</classifier>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -90,6 +93,12 @@
 				<version>3.11.0</version>
 				<configuration>
 					<annotationProcessorPaths>
+						<annotationProcessorPath>
+							<groupId>com.querydsl</groupId>
+							<artifactId>querydsl-apt</artifactId>
+							<version>5.0.0</version>
+							<classifier>jakarta</classifier>
+						</annotationProcessorPath>
 						<path>
 							<groupId>com.querydsl</groupId>
 							<artifactId>querydsl-apt</artifactId>

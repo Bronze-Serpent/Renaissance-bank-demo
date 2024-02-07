@@ -21,7 +21,14 @@ CREATE TABLE customer(
 CREATE TABLE sale(
     id              BIGSERIAL   PRIMARY KEY,
     date            DATE,
-    customer_id     BIGINT      REFERENCES customer(id),
-    car_id          BIGINT      REFERENCES car(id),
-    quantity        INTEGER
+    customer_id     BIGINT      REFERENCES customer(id)
+);
+
+
+--changeset barabanov:cars_in_sale
+CREATE TABLE car_in_sale(
+     id              BIGSERIAL   PRIMARY KEY,
+     sale_id         BIGINT      REFERENCES sale(id),
+     car_id          BIGINT      REFERENCES car(id),
+     quantity        INTEGER
 );

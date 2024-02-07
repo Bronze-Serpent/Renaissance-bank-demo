@@ -2,7 +2,6 @@ package com.barabanov.demo.service;
 
 import com.barabanov.demo.dto.RevenueFilter;
 import com.barabanov.demo.dto.SaleDto;
-import com.barabanov.demo.entity.Sale;
 import com.barabanov.demo.mapper.SalesMapper;
 import com.barabanov.demo.repository.SaleRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +19,18 @@ import java.util.stream.StreamSupport;
 public class SaleServiceImpl implements SaleService
 {
     private final SaleRepository saleRepository;
-
     private final SalesMapper salesMapper;
 
 
-    public Long getRevenue(RevenueFilter revenueFilter)
+    @Override
+    public Integer getRevenue(RevenueFilter revenueFilter)
     {
-        return null;
+        Integer revenue = saleRepository.sumAllRevenue(revenueFilter);
+        return  revenue != null ? revenue : 0;
     }
 
 
+    @Override
     public List<SaleDto> getAllSales(Sort sort)
     {
         return StreamSupport.stream(saleRepository.findAll(sort).spliterator(), false)

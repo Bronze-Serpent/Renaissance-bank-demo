@@ -3,14 +3,10 @@ package com.barabanov.demo.mapper;
 import com.barabanov.demo.dto.SaleDto;
 import com.barabanov.demo.entity.Sale;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 
-@Mapper(uses = {
-        CustomerMapper.class
-})
-public interface SalesMapper
+@Mapper(uses = {CarInSaleMapper.class, CustomerMapper.class}, componentModel = "spring")
+public abstract class SalesMapper
 {
-    @Mapping(target = "carModel", source = "car.name")
-    SaleDto toDto(Sale sale);
+    public abstract SaleDto toDto(Sale sale);
 }

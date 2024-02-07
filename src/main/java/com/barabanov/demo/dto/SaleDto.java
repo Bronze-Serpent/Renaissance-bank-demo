@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -13,9 +14,8 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SaleDto
 {
-    CustomerDto customer;
-    Long amount;
-    String carModel;
-    Integer quantity;
     LocalDate date;
+    CustomerDto customer;
+    List<CarInSaleDto> carInSale;
+    Long orderCoast;
 }

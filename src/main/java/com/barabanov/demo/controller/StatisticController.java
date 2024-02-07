@@ -1,14 +1,14 @@
 package com.barabanov.demo.controller;
 
+import com.barabanov.demo.dto.RevenueDto;
 import com.barabanov.demo.dto.RevenueFilter;
 import com.barabanov.demo.dto.SaleDto;
-import com.barabanov.demo.service.SaleService;
+import com.barabanov.demo.service.SaleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -16,20 +16,20 @@ import java.util.List;
 @RestController("/api/v1/statistic")
 public class StatisticController
 {
-    private final SaleService saleService;
+    private final SaleServiceImpl saleService;
 
-
+    // TODO: 07.02.2024 тут почему нельзя @RequestParam RevenueFilter
     @GetMapping("/revenue")
-    private Long getRevenue(RevenueFilter revenueFilter)
+    public RevenueDto getRevenue(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate)
     {
-        return 0L;
+        return new RevenueDto(saleService.getRevenue(new RevenueFilter(startDate, endDate)));
     }
 
 
     @PostMapping("/get-all-sales")
-    private List<SaleDto> getAllSales()
+    public List<SaleDto> getAllSales()
     {
-        Sort sort = Sort.by("date", "customer.lastname", "customer.firstname", "amount");
+        Sort sort = Sort.by("date", "customer.lastname", "customer.firstname", "orderCoast");
         return saleService.getAllSales(sort);
     }
 }

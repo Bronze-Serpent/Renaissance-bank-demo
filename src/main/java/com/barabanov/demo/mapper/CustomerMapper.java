@@ -5,8 +5,8 @@ import com.barabanov.demo.entity.Customer;
 import org.mapstruct.Mapper;
 
 
-@Mapper
-public interface CustomerMapper
+@Mapper(componentModel = "spring")
+public abstract class CustomerMapper
 {
-    CustomerDto toDto(Customer customer);
+    public abstract CustomerDto toDto(Customer customer);
 }

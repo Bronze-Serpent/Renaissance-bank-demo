@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Revenue
+public class RevenueDto
 {
-    Long revenue;
+    Integer revenue;
 }
