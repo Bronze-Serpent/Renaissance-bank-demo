@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -17,15 +18,16 @@ public class StatisticController
 {
     private final SaleServiceImpl saleService;
 
+    // TODO: 07.02.2024 тут почему нельзя @RequestParam RevenueFilter
     @GetMapping("/revenue")
-    private RevenueDto getRevenue(@RequestParam RevenueFilter revenueFilter)
+    public RevenueDto getRevenue(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate)
     {
-        return new RevenueDto(saleService.getRevenue(revenueFilter));
+        return new RevenueDto(saleService.getRevenue(new RevenueFilter(startDate, endDate)));
     }
 
 
     @PostMapping("/get-all-sales")
-    private List<SaleDto> getAllSales()
+    public List<SaleDto> getAllSales()
     {
         Sort sort = Sort.by("date", "customer.lastname", "customer.firstname", "orderCoast");
         return saleService.getAllSales(sort);

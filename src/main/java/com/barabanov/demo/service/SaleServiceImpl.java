@@ -25,7 +25,8 @@ public class SaleServiceImpl implements SaleService
     @Override
     public Integer getRevenue(RevenueFilter revenueFilter)
     {
-        return saleRepository.sumAllRevenue(revenueFilter);
+        Integer revenue = saleRepository.sumAllRevenue(revenueFilter);
+        return  revenue != null ? revenue : 0;
     }
 
 
