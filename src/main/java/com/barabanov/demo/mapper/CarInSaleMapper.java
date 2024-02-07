@@ -13,7 +13,7 @@ public abstract class CarInSaleMapper
     public List<CarInSaleDto> toDto(List<CarInSale> carInSaleList)
     {
         return carInSaleList.stream()
-                .map(carInSale -> new CarInSaleDto(carInSale.getCar().getName(), carInSale.getQuantity()))
+                .map(carInSale -> new CarInSaleDto(carInSale.getCar().getName(), carInSale.getPrice(), carInSale.getQuantity()))
                 .toList();
     }
 }

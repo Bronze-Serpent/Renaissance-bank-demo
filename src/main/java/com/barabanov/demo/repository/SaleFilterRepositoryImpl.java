@@ -23,15 +23,14 @@ public class SaleFilterRepositoryImpl implements SaleFilterRepository
     public Integer sumAllRevenue(RevenueFilter revenueFilter)
     {
         Predicate predicate = QPredicates.builder()
-                .add(revenueFilter.getStartDate(), sale.date::after)
-                .add(revenueFilter.getEndDate(), sale.date::before)
+                .add(revenueFilter.getStartDate(), (startDate) -> sale.date.before(startDate).not())
+                .add(revenueFilter.getEndDate(), (endDate) -> sale.date.after(endDate).not())
                 .build();
 
         return new JPAQuery<Long>(entityManager)
-                .select(carInSale.quantity.multiply(car.price).sum())
+                .select(carInSale.quantity.multiply(carInSale.price).sum())
                 .from(sale)
                 .join(sale.carInSale, carInSale)
-                .join(carInSale.car, car)
                 .where(predicate)
                 .fetchOne();
     }

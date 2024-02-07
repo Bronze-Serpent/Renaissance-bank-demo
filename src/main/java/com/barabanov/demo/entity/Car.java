@@ -17,6 +17,4 @@ import lombok.experimental.SuperBuilder;
 public class Car extends BaseEntity<Long>
 {
     String name;
-
-    Integer price;
 }

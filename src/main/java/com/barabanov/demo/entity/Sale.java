@@ -30,10 +30,11 @@ public class Sale extends BaseEntity<Long>
     @OneToMany(mappedBy = "sale")
     List<CarInSale> carInSale;
 
-    @Formula("(SELECT SUM(cis.quantity * c.price)" +
-            "   FROM car_in_sale cis INNER JOIN car c" +
-            "       ON cis.car_id = c.id" +
-            "   WHERE cis.sale_id = id)")
+    @Formula("""
+            SELECT SUM(cis.quantity * cis.price)
+            FROM car_in_sale cis
+            WHERE cis.sale_id = id;
+            """)
     private Integer orderCoast;
 
 /*    public Long getOrderCoast()

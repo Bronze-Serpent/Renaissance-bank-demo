@@ -23,5 +23,7 @@ public class CarInSale extends BaseEntity<Long>
     @ManyToOne
     Sale sale;
 
+    Integer price;
+
     Integer quantity;
 }
