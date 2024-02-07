@@ -7,8 +7,6 @@ import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 
-
-import static com.barabanov.demo.entity.QCar.car;
 import static com.barabanov.demo.entity.QCarInSale.carInSale;
 import static com.barabanov.demo.entity.QSale.sale;
 

@@ -31,9 +31,9 @@ public class Sale extends BaseEntity<Long>
     List<CarInSale> carInSale;
 
     @Formula("""
-            SELECT SUM(cis.quantity * cis.price)
+            (SELECT SUM(cis.quantity * cis.price)
             FROM car_in_sale cis
-            WHERE cis.sale_id = id;
+            WHERE cis.sale_id = id)
             """)
     private Integer orderCoast;
 
