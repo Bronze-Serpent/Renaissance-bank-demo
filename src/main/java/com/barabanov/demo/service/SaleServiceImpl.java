@@ -14,7 +14,7 @@ import java.util.stream.StreamSupport;
 
 
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 @Service
 public class SaleServiceImpl implements SaleService
 {

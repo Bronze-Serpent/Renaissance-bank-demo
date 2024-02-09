@@ -36,13 +36,4 @@ public class Sale extends BaseEntity<Long>
             WHERE cis.sale_id = id)
             """)
     private Integer orderCoast;
-
-/*    public Long getOrderCoast()
-    {
-        long coast = 0L;
-        for (CarInSale carInSaleObj : carInSale)
-            coast += (long) carInSaleObj.getCar().getPrice() * carInSaleObj.getQuantity();
-
-        return coast;
-    }*/
 }
